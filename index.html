@@ -208,6 +208,17 @@
             { q: "Formule de duplication : \\( \\tan 2\\alpha = \\) ?", a: "\\( \\frac{2 \\tan \\alpha}{1 - \\tan^{2} \\alpha} \\)" }
         ];
 
+        // Fonction pour mélanger aléatoirement les flashcards
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // On mélange les cartes dès le chargement de la page
+        shuffle(flashcards);
+
         let currentIndex = 0;
 
         function updateCard() {
