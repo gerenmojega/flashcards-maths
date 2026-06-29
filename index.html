@@ -118,14 +118,51 @@
     </div>
 
     <script>
-        // TES CARTES : Tu peux en ajouter autant que tu veux ici en utilisant la syntaxe LaTeX entre \( et \)
+        // TES CARTES : Tu peux en ajouter autant que tu veux ici en utilisant la syntaxe LaTeX entre \( et \
+
+
+
         const flashcards = [
-            { q: "Quel est le discriminant \(\\Delta\) d'une équation du second degré ?", a: "\\(\\Delta = b^{2} - 4ac\\)" },
-            { q: "Identité trigonométrique fondamentale ?", a: "\\(\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1\\)" },
-            { q: "Quelle est la dérivée d'un produit \\((f.g)'\\) ?", a: "\\(f'.g + f.g'\\)" },
-            { q: "Quelle est la formule du volume d'une boule ?", a: "\\(V = \\frac{4}{3}\\pi R^{3}\\)" },
-            { q: "Comment s'écrit un nombre complexe sous forme algébrique ?", a: "\\(z = x + i.y\\)" },
-            { q: "Intégration par parties ?", a: "\\(\\int f.g' dx = f.g - \\int f'.g dx\\)" }
+            // PRODUITS REMARQUABLES
+            { q: "Que vaut \\( (a+b)^{2} \\) ?", a: "\\( a^{2} + 2ab + b^{2} \\)" },
+            { q: "Que vaut \\( a^{2} - b^{2} \\) ?", a: "\\( (a+b)(a-b) \\)" },
+            
+            // SUITES
+            { q: "Terme général d'une suite arithmétique \\( t_{n} \\) ?", a: "\\( t_{1} + (n-1)r \\)" },
+            { q: "Terme général d'une suite géométrique \\( t_{n} \\) ?", a: "\\( t_{1} \\cdot q^{n-1} \\)" },
+            
+            // ÉQUATIONS DU SECOND DEGRÉ
+            { q: "Quel est le discriminant \\( \\Delta \\) d'une équation du second degré ?", a: "\\( \\Delta = b^{2} - 4ac \\)" },
+            { q: "Quelles sont les racines si \\( \\Delta > 0 \\) ?", a: "\\( x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} \\)" },
+            { q: "Que vaut la somme des racines \\( x_{1} + x_{2} \\) ?", a: "\\( \\frac{-b}{a} \\)" },
+            { q: "Que vaut le produit des racines \\( x_{1} \\cdot x_{2} \\) ?", a: "\\( \\frac{c}{a} \\)" },
+
+            // TRIGONOMÉTRIE
+            { q: "Identité trigonométrique fondamentale ?", a: "\\( \\sin^{2}\\alpha + \\cos^{2}\\alpha = 1 \\)" },
+            { q: "Que vaut \\( \\sin(\\alpha + \\beta) \\) ?", a: "\\( \\sin\\alpha \\cos\\beta + \\cos\\alpha \\sin\\beta \\)" },
+            { q: "Que vaut \\( \\cos(2\\alpha) \\) ?", a: "\\( \\cos^{2}\\alpha - \\sin^{2}\\alpha \\)" },
+
+            // DÉRIVÉES
+            { q: "Quelle est la dérivée d'un produit \\( (f.g)' \\) ?", a: "\\( f'.g + f.g' \\)" },
+            { q: "Quelle est la dérivée d'un quotient \\( (\\frac{f}{g})' \\) ?", a: "\\( \\frac{f'g - f.g'}{g^{2}} \\)" },
+            { q: "Dérivée de \\( x^{n} \\) ?", a: "\\( n x^{n-1} \\)" },
+            { q: "Dérivée de \\( \\sin(x) \\) ?", a: "\\( \\cos(x) \\)" },
+            { q: "Dérivée de \\( \\cos(x) \\) ?", a: "\\( -\\sin(x) \\)" },
+            { q: "Dérivée de \\( \\ln(x) \\) ?", a: "\\( \\frac{1}{x} \\)" },
+
+            // PRIMITIVES / INTÉGRALES
+            { q: "Primitive de \\( x^{n} \\) (pour \\( n \\neq -1 \\)) ?", a: "\\( \\frac{x^{n+1}}{n+1} + C \\)" },
+            { q: "Primitive de \\( \\frac{1}{x} \\) ?", a: "\\( \\ln|x| + C \\)" },
+            { q: "Formule de l'intégration par parties ?", a: "\\( \\int f.g' dx = f.g - \\int f'.g dx \\)" },
+
+            // VOLUMES ET SURFACES
+            { q: "Volume d'une boule (sphère) ?", a: "\\( V = \\frac{4}{3}\\pi R^{3} \\)" },
+            { q: "Volume d'un cylindre ?", a: "\\( V = \\pi r^{2} h \\)" },
+            { q: "Aire d'un disque ?", a: "\\( A = \\pi r^{2} \\)" },
+
+            // NOMBRES COMPLEXES
+            { q: "Forme algébrique d'un nombre complexe ?", a: "\\( z = x + i.y \\)" },
+            { q: "Que vaut \\( i^{2} \\) ?", a: "\\( -1 \\)" }
         ];
 
         let currentIndex = 0;
