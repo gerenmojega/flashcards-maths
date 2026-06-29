@@ -126,6 +126,7 @@
 
 
           // On regroupe les flashcards par chapitres
+     // 1. Déclaration de tous les chapitres
         const chapters = [
             // === 1. PRODUITS REMARQUABLES ===
             [
@@ -220,7 +221,7 @@
             ]
         ];
 
-  // Fonction générique pour mélanger un tableau
+        // 2. Fonction de mélange
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -228,13 +229,11 @@
             }
         }
 
-        // Tableau final qui va contenir toutes nos cartes
+        // 3. Construction de la variable globale 'flashcards' attendue par ton script
         const flashcards = [];
-
-        // Pour chaque chapitre, on mélange ses questions et on les ajoute à la suite
         chapters.forEach(chapter => {
-            shuffleArray(chapter); // On mélange l'intérieur de ce chapitre
-            flashcards.push(...chapter); // On l'ajoute à la liste finale
+            shuffleArray(chapter); // Mélange l'intérieur du chapitre
+            flashcards.push(...chapter); // Ajoute les cartes mélangées
         });
 
         // On mélange les cartes dès le chargement de la page
