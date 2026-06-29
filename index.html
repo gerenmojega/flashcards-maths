@@ -122,47 +122,87 @@
 
 
 
-        const flashcards = [
-            // PRODUITS REMARQUABLES
-            { q: "Que vaut \\( (a+b)^{2} \\) ?", a: "\\( a^{2} + 2ab + b^{2} \\)" },
-            { q: "Que vaut \\( a^{2} - b^{2} \\) ?", a: "\\( (a+b)(a-b) \\)" },
-            
-            // SUITES
-            { q: "Terme général d'une suite arithmétique \\( t_{n} \\) ?", a: "\\( t_{1} + (n-1)r \\)" },
-            { q: "Terme général d'une suite géométrique \\( t_{n} \\) ?", a: "\\( t_{1} \\cdot q^{n-1} \\)" },
-            
-            // ÉQUATIONS DU SECOND DEGRÉ
-            { q: "Quel est le discriminant \\( \\Delta \\) d'une équation du second degré ?", a: "\\( \\Delta = b^{2} - 4ac \\)" },
-            { q: "Quelles sont les racines si \\( \\Delta > 0 \\) ?", a: "\\( x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} \\)" },
-            { q: "Que vaut la somme des racines \\( x_{1} + x_{2} \\) ?", a: "\\( \\frac{-b}{a} \\)" },
+           const flashcards = [
+            // === 1. PRODUITS REMARQUABLES ===
+            { q: "Que vaut \\( (a \\pm b)^{2} \\) ?", a: "\\( a^{2} \\pm 2ab + b^{2} \\)" },
+            { q: "Que vaut \\( (a \\pm b)^{3} \\) ?", a: "\\( a^{3} \\pm 3a^{2}b + 3ab^{2} \\pm b^{3} \\)" },
+            { q: "Que vaut \\( a^{2} - b^{2} \\) ?", a: "\\( (a + b)(a - b) \\)" },
+            { q: "Que vaut \\( a^{3} \\pm b^{3} \\) ?", a: "\\( (a \\pm b)(a^{2} \\mp ab + b^{2}) \\)" },
+            { q: "Que vaut \\( (a + b + c)^{2} \\) ?", a: "\\( a^{2} + b^{2} + c^{2} + 2ab + 2ac + 2bc \\)" },
+
+            // === 2. PUISSANCES ===
+            { q: "Que vaut \\( a^{m} \\cdot a^{p} \\) ?", a: "\\( a^{m + p} \\)" },
+            { q: "Que vaut \\( \\frac{a^{m}}{a^{p}} \\) ?", a: "\\( a^{m - p} \\)" },
+            { q: "Que vaut \\( (ab)^{m} \\) ?", a: "\\( a^{m} \\cdot b^{m} \\)" },
+            { q: "Que vaut \\( \\left(\\frac{a}{b}\\right)^{m} \\) ?", a: "\\( \\frac{a^{m}}{b^{m}} \\)" },
+            { q: "Que vaut \\( (a^{m})^{p} \\) ?", a: "\\( a^{m \\cdot p} \\)" },
+            { q: "Que vaut \\( a^{0} \\) ?", a: "\\( 1 \\)" },
+            { q: "Comment écrire \\( a^{-m} \\) sans exposant négatif ?", a: "\\( \\frac{1}{a^{m}} \\)" },
+
+            // === 3. RACINES ===
+            { q: "Condition d'équivalence : \\( \\sqrt[n]{a} = b \\iff \\) ?", a: "\\( b^{n} = a \\)" },
+            { q: "Que vaut \\( \\sqrt[n]{ab} \\) ?", a: "\\( \\sqrt[n]{a} \\cdot \\sqrt[n]{b} \\)" },
+            { q: "Que vaut \\( \\sqrt[n]{\\frac{a}{b}} \\) ?", a: "\\( \\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}} \\)" },
+            { q: "Simplification d'indice : \\( \\sqrt[np]{a^{mp}} \\) ?", a: "\\( \\sqrt[n]{a^{m}} \\)" },
+            { q: "Que donne une racine de racine : \\( \\sqrt[n]{\\sqrt[p]{a}} \\) ?", a: "\\( \\sqrt[n \\cdot p]{a} \\)" },
+            { q: "Comment écrire \\( \\sqrt[n]{a^{p}} \\) sous forme d'exposant fractionnaire ?", a: "\\( a^{\\frac{p}{n}} \\)" },
+
+            // === 4. SUITES ARITHMÉTIQUES & MOYENNE ARITHMÉTIQUE ===
+            { q: "Définition par récurrence d'une suite arithmétique : \\( t_{n+1} = \\) ?", a: "\\( t_{n} + r \\)" },
+            { q: "Terme général de rang \\( n \\) d'une suite arithmétique : \\( t_{n} = \\) ?", a: "\\( t_{1} + (n - 1).r \\)" },
+            { q: "Somme des \\( n \\) premiers termes d'une suite arithmétique : \\( S_{n} = \\) ?", a: "\\( \\frac{n(t_{1} + t_{n})}{2} \\)" },
+            { q: "Formule de la moyenne arithmétique \\( A \\) ?", a: "\\( \\frac{x_{1} + x_{2} + \\dots + x_{n}}{n} \\)" },
+
+            // === 5. SUITES GÉOMÉTRIQUES & MOYENNES ===
+            { q: "Définition par récurrence d'une suite géométrique : \\( t_{n+1} = \\) ?", a: "\\( t_{n} \\cdot q \\)" },
+            { q: "Terme général de rang \\( n \\) d'une suite géométrique : \\( t_{n} = \\) ?", a: "\\( t_{1} \\cdot q^{n-1} \\)" },
+            { q: "Somme des \\( n \\) premiers termes d'une suite géométrique : \\( S_{n} = \\) ?", a: "\\( t_{1} \\cdot \\frac{q^{n} - 1}{q - 1} \\)" },
+            { q: "Limite de la somme d'une suite géométrique infinie si \\( |q| < 1 \\) ?", a: "\\( \\lim_{n \\to +\\infty} S_{n} = \\frac{t_{1}}{1 - q} \\)" },
+            { q: "Formule de la moyenne géométrique \\( G \\) ?", a: "\\( \\sqrt[n]{x_{1} \\cdot x_{2} \\cdot \\dots \\cdot x_{n}} \\)" },
+            { q: "Formule de la moyenne harmonique \\( H \\) ?", a: "\\( \\frac{n}{\\frac{1}{x_{1}} + \\frac{1}{x_{2}} + \\dots + \\frac{1}{x_{n}}} \\)" },
+
+            // === 6. FONCTIONS DU PREMIER DEGRÉ ===
+            { q: "Quelle est l'équation d'une fonction linéaire ?", a: "\\( y = mx \\)" },
+            { q: "Quelle est l'équation d'une fonction affine ?", a: "\\( y = mx + p \\)" },
+            { q: "Quelle est l'équation d'une fonction constante ?", a: "\\( y = p \\)" },
+            { q: "Sens de variation d'une droite selon sa pente \\( m \\) ?", a: "\\( m > 0 \\implies \\text{Croissante} \\\\ m < 0 \\implies \\text{Décroissante} \\)" },
+
+            // === 7. FONCTIONS & ÉQUATIONS DU SECOND DEGRÉ ===
+            { q: "Quelle est la forme générale d'une fonction du second degré ?", a: "\\( f(x) = ax^{2} + bx + c \\quad (a \\neq 0) \\)" },
+            { q: "Quelle est la formule du discriminant \\( \\Delta \\) ?", a: "\\( \\Delta = b^{2} - 4ac \\)" },
+            { q: "Quelles sont les coordonnées du sommet \\( S \\) d'une parabole ?", a: "\\( S\\left(\\frac{-b}{2a} ; \\frac{-\\Delta}{4a}\\right) \\)" },
+            { q: "Quelles sont les solutions de \\( ax^{2}+bx+c=0 \\) si \\( \\Delta > 0 \\) ?", a: "\\( x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} \\)" },
+            { q: "Quelle est la solution unique si \\( \\Delta = 0 \\) ?", a: "\\( x = \\frac{-b}{2a} \\)" },
+            { q: "Que se passe-t-il pour l'équation si \\( \\Delta < 0 \\) ?", a: "\\( S = \\emptyset \\quad (\\text{Équation impossible dans } \\mathbb{R}) \\)" },
+            { q: "Que vaut la somme des racines \\( x_{1} + x_{2} \\) ?", a: "\\( -\\frac{b}{a} \\)" },
             { q: "Que vaut le produit des racines \\( x_{1} \\cdot x_{2} \\) ?", a: "\\( \\frac{c}{a} \\)" },
+            { q: "Comment factoriser le trinôme si \\( \\Delta > 0 \\) ?", a: "\\( a(x - x_{1})(x - x_{2}) \\)" },
+            { q: "Comment factoriser le trinôme si \\( \\Delta = 0 \\) ?", a: "\\( a(x - x_{1})^{2} \\)" },
 
-            // TRIGONOMÉTRIE
-            { q: "Identité trigonométrique fondamentale ?", a: "\\( \\sin^{2}\\alpha + \\cos^{2}\\alpha = 1 \\)" },
-            { q: "Que vaut \\( \\sin(\\alpha + \\beta) \\) ?", a: "\\( \\sin\\alpha \\cos\\beta + \\cos\\alpha \\sin\\beta \\)" },
-            { q: "Que vaut \\( \\cos(2\\alpha) \\) ?", a: "\\( \\cos^{2}\\alpha - \\sin^{2}\\alpha \\)" },
+            // === 8. FONCTIONS LOGARITHMES ===
+            { q: "Que vaut \\( \\log_{a}(x \\cdot y) \\) ?", a: "\\( \\log_{a} x + \\log_{a} y \\)" },
+            { q: "Que vaut \\( \\log_{a}\\left(\\frac{x}{y}\\right) \\) ?", a: "\\( \\log_{a} x - \\log_{a} y \\)" },
+            { q: "Que vaut \\( \\log_{a}(x^{n}) \\) ?", a: "\\( n \\cdot \\log_{a} x \\)" },
+            { q: "Formules de changement de base pour \\( \\log_{a} x \\) ?", a: "\\( \\frac{\\log_{b} x}{\\log_{b} a} = \\frac{\\ln x}{\\ln a} \\)" },
+            { q: "Que valent les simplifications réciproques \\( \\log_{a}(a^{x}) \\) et \\( \\ln(e^{x}) \\) ?", a: "\\( x \\)" },
+            { q: "Que valent \\( a^{\\log_{a} x} \\) et \\( e^{\\ln x} \\) ?", a: "\\( x \\)" },
+            { q: "Comment écrire \\( a^{x} \\) en base naturelle \\( e \\) ?", a: "\\( e^{x \\cdot \\ln a} \\)" },
 
-            // DÉRIVÉES
-            { q: "Quelle est la dérivée d'un produit \\( (f.g)' \\) ?", a: "\\( f'.g + f.g' \\)" },
-            { q: "Quelle est la dérivée d'un quotient \\( (\\frac{f}{g})' \\) ?", a: "\\( \\frac{f'g - f.g'}{g^{2}} \\)" },
-            { q: "Dérivée de \\( x^{n} \\) ?", a: "\\( n x^{n-1} \\)" },
-            { q: "Dérivée de \\( \\sin(x) \\) ?", a: "\\( \\cos(x) \\)" },
-            { q: "Dérivée de \\( \\cos(x) \\) ?", a: "\\( -\\sin(x) \\)" },
-            { q: "Dérivée de \\( \\ln(x) \\) ?", a: "\\( \\frac{1}{x} \\)" },
+            // === 9. TRIGONOMÉTRIE : RELATIONS FONDAMENTALES ===
+            { q: "Définition de \\( \\tan \\alpha \\) et \\( \\cotg \\alpha \\) ?", a: "\\( \\tan \\alpha = \\frac{\\sin \\alpha}{\\cos \\alpha} \\quad \\text{et} \\quad \\cotg \\alpha = \\frac{\\cos \\alpha}{\\sin \\alpha} \\)" },
+            { q: "Définition de la sécante \\( \\sec \\alpha \\) et cosécante \\( \\csc \\alpha \\) ?", a: "\\( \\sec \\alpha = \\frac{1}{\\cos \\alpha} \\quad \\text{et} \\quad \\csc \\alpha = \\frac{1}{\\sin \\alpha} \\)" },
+            { q: "Quelle est la relation fondamentale de la trigonométrie ?", a: "\\( \\sin^{2} \\alpha + \\cos^{2} \\alpha = 1 \\)" },
+            { q: "Relation entre tangente et sécante : \\( 1 + \\tan^{2} \\alpha = \\) ?", a: "\\( \\frac{1}{\\cos^{2} \\alpha} \\)" },
+            { q: "Relation entre cotangente et cosécante : \\( 1 + \\cotg^{2} \\alpha = \\) ?", a: "\\( \\frac{1}{\\sin^{2} \\alpha} \\)" },
 
-            // PRIMITIVES / INTÉGRALES
-            { q: "Primitive de \\( x^{n} \\) (pour \\( n \\neq -1 \\)) ?", a: "\\( \\frac{x^{n+1}}{n+1} + C \\)" },
-            { q: "Primitive de \\( \\frac{1}{x} \\) ?", a: "\\( \\ln|x| + C \\)" },
-            { q: "Formule de l'intégration par parties ?", a: "\\( \\int f.g' dx = f.g - \\int f'.g dx \\)" },
-
-            // VOLUMES ET SURFACES
-            { q: "Volume d'une boule (sphère) ?", a: "\\( V = \\frac{4}{3}\\pi R^{3} \\)" },
-            { q: "Volume d'un cylindre ?", a: "\\( V = \\pi r^{2} h \\)" },
-            { q: "Aire d'un disque ?", a: "\\( A = \\pi r^{2} \\)" },
-
-            // NOMBRES COMPLEXES
-            { q: "Forme algébrique d'un nombre complexe ?", a: "\\( z = x + i.y \\)" },
-            { q: "Que vaut \\( i^{2} \\) ?", a: "\\( -1 \\)" }
+            // === 10. TRIGONOMÉTRIE : FORMULES D'ADDITION & DUPLICATION ===
+            { q: "Formule d'addition : \\( \\sin(\\alpha \\pm \\beta) = \\) ?", a: "\\( \\sin \\alpha \\cos \\beta \\pm \\cos \\alpha \\sin \\beta \\)" },
+            { q: "Formule d'addition : \\( \\cos(\\alpha \\pm \\beta) = \\) ?", a: "\\( \\cos \\alpha \\cos \\beta \\mp \\sin \\alpha \\sin \\beta \\)" },
+            { q: "Formule d'addition : \\( \\tan(\\alpha \\pm \\beta) = \\) ?", a: "\\( \\frac{\\tan \\alpha \\pm \\tan \\beta}{1 \\mp \\tan \\alpha \\tan \\beta} \\)" },
+            { q: "Formule d'addition : \\( \\cotg(\\alpha \\pm \\beta) = \\) ?", a: "\\( \\frac{\\cotg \\alpha \\cotg \\beta \\mp 1}{\\cotg \\beta \\pm \\cotg \\alpha} \\)" },
+            { q: "Formule de duplication : \\( \\sin 2\\alpha = \\) ?", a: "\\( 2 \\sin \\alpha \\cos \\alpha \\)" },
+            { q: "Formule de duplication : \\( \\cos 2\\alpha = \\) ?", a: "\\( \\cos^{2} \\alpha - \\sin^{2} \\alpha \\)" },
+            { q: "Formule de duplication : \\( \\tan 2\\alpha = \\) ?", a: "\\( \\frac{2 \\tan \\alpha}{1 - \\tan^{2} \\alpha} \\)" }
         ];
 
         let currentIndex = 0;
