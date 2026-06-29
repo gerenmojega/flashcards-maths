@@ -108,10 +108,8 @@
 
     <div class="scene">
         <div class="card" id="flashcard" onclick="flipCard()">
-            <div class="card-face card-face-front" id="question">
-                </div>
-            <div class="card-face card-face-back" id="answer">
-                </div>
+            <div class="card-face card-face-front" id="question"></div>
+            <div class="card-face card-face-back" id="answer"></div>
         </div>
     </div>
 
@@ -121,13 +119,7 @@
     </div>
 
     <script>
-        // TES CARTES : Tu peux en ajouter autant que tu veux ici en utilisant la syntaxe LaTeX entre \( et \
-
-
-
-          // On regroupe les flashcards par chapitres
-     // 1. Déclaration de tous les chapitres
-// 1. Déclaration de tous les chapitres
+        // 1. Déclaration de tous les chapitres
         const chapters = [
             // === 1. PRODUITS REMARQUABLES ===
             [
@@ -234,11 +226,8 @@
         const flashcards = [];
         chapters.forEach(chapter => {
             shuffleArray(chapter); // Mélange l'intérieur du chapitre
-            flashcards.push(...chapter); // Ajoute les cartes mélangées
+            flashcards.push(...chapter); // Ajoute les cartes mélangées dans le grand tableau
         });
-
-        // On mélange les cartes dès le chargement de la page
-        shuffle(flashcards);
 
         let currentIndex = 0;
 
